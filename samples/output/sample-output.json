@@ -1,70 +1,588 @@
 {
-  "fileName": "Inventory Warehouse Management Document.pdf",
-  "fileType": "pdf",
-  "fileSizeKb": 307,
+  "fileName": "Managing articles.pdf",
+  "fileType": "PDF",
+  "fileSizeKb": 4994,
   "metrics": {
-    "totalPages": 17,
-    "wordCount": 1849,
-    "paragraphCount": 38,
-    "headingCount": 98,
-    "avgWordsPerParagraph": 48.7,
-    "imageCount": 1,
+    "totalPages": 38,
+    "wordCount": 6476,
+    "paragraphCount": 10,
+    "headingCount": 106,
+    "sectionCount": 106,
+    "avgWordsPerParagraph": 647.6,
+    "imageCount": 0,
     "tableCount": 0,
-    "hyperlinkCount": 0,
-    "listCount": 197,
-    "sectionCount": 98
+    "hyperlinkCount": 15,
+    "listCount": 170
   },
   "structure": {
+    "headingHierarchy": [
+      {
+        "level": 1,
+        "text": " NOTE",
+        "wordsUnder": 61
+      },
+      {
+        "level": 1,
+        "text": "2. Click the Create dropdown and select Article > Blank.",
+        "wordsUnder": 61
+      },
+      {
+        "level": 1,
+        "text": "3. Enter a Title for the new article.",
+        "wordsUnder": 61
+      },
+      {
+        "level": 1,
+        "text": " NOTE",
+        "wordsUnder": 61
+      },
+      {
+        "level": 1,
+        "text": " NOTE",
+        "wordsUnder": 61
+      },
+      {
+        "level": 1,
+        "text": "6. Click Create to add the article.",
+        "wordsUnder": 61
+      },
+      {
+        "level": 1,
+        "text": "1. To create an article using the Flywheel (U) icon:",
+        "wordsUnder": 61
+      },
+      {
+        "level": 1,
+        "text": "4. Click Article > Blank.",
+        "wordsUnder": 61
+      },
+      {
+        "level": 1,
+        "text": "5. Enter a Title for the new article.",
+        "wordsUnder": 61
+      },
+      {
+        "level": 1,
+        "text": " NOTE",
+        "wordsUnder": 61
+      },
+      {
+        "level": 1,
+        "text": " NOTE",
+        "wordsUnder": 61
+      },
+      {
+        "level": 1,
+        "text": "8. Click Create to add the article.",
+        "wordsUnder": 61
+      },
+      {
+        "level": 1,
+        "text": "3. Click Article and select Blank.",
+        "wordsUnder": 61
+      },
+      {
+        "level": 1,
+        "text": "4. Enter a Title for the new article.",
+        "wordsUnder": 61
+      },
+      {
+        "level": 1,
+        "text": " NOTE",
+        "wordsUnder": 61
+      },
+      {
+        "level": 1,
+        "text": " NOTE",
+        "wordsUnder": 61
+      },
+      {
+        "level": 1,
+        "text": "7. Click Create to add the article.",
+        "wordsUnder": 61
+      },
+      {
+        "level": 1,
+        "text": "2. Click the desired Folder/Index type category.",
+        "wordsUnder": 61
+      },
+      {
+        "level": 1,
+        "text": "4. Enter a Title for the new article.",
+        "wordsUnder": 61
+      },
+      {
+        "level": 1,
+        "text": " NOTE",
+        "wordsUnder": 61
+      },
+      {
+        "level": 1,
+        "text": " NOTE",
+        "wordsUnder": 61
+      },
+      {
+        "level": 1,
+        "text": "7. Click Create to add the article.",
+        "wordsUnder": 61
+      },
+      {
+        "level": 1,
+        "text": "2. In the Document section, click Create article.",
+        "wordsUnder": 61
+      },
+      {
+        "level": 1,
+        "text": "3. Enter a Title for the new article.",
+        "wordsUnder": 61
+      },
+      {
+        "level": 1,
+        "text": " NOTE",
+        "wordsUnder": 61
+      },
+      {
+        "level": 1,
+        "text": " NOTE",
+        "wordsUnder": 61
+      },
+      {
+        "level": 1,
+        "text": "6. Click Create to add the article.",
+        "wordsUnder": 61
+      },
+      {
+        "level": 1,
+        "text": " NOTE",
+        "wordsUnder": 61
+      },
+      {
+        "level": 1,
+        "text": "3. Select Article > From template.",
+        "wordsUnder": 61
+      },
+      {
+        "level": 1,
+        "text": "6. Click Use this template.",
+        "wordsUnder": 61
+      },
+      {
+        "level": 1,
+        "text": "3. Click More () > Article > From template.",
+        "wordsUnder": 61
+      },
+      {
+        "level": 1,
+        "text": "4. Troubleshooting GuideTroubleshooting Guide",
+        "wordsUnder": 61
+      },
+      {
+        "level": 1,
+        "text": "5. Click Use this template.",
+        "wordsUnder": 61
+      },
+      {
+        "level": 1,
+        "text": "5. Click Use this template.",
+        "wordsUnder": 61
+      },
+      {
+        "level": 1,
+        "text": "2. Click Pick a template.",
+        "wordsUnder": 61
+      },
+      {
+        "level": 1,
+        "text": " NOTE",
+        "wordsUnder": 61
+      },
+      {
+        "level": 1,
+        "text": " NOTE",
+        "wordsUnder": 61
+      },
+      {
+        "level": 1,
+        "text": "2. Make the necessary changes to the article content.",
+        "wordsUnder": 61
+      },
+      {
+        "level": 1,
+        "text": "1. Navigate to any published article in the Markdown editor.",
+        "wordsUnder": 61
+      },
+      {
+        "level": 1,
+        "text": "3. Once done, click Close markdown.",
+        "wordsUnder": 61
+      },
+      {
+        "level": 1,
+        "text": " NOTE",
+        "wordsUnder": 61
+      },
+      {
+        "level": 1,
+        "text": "3. Click the More () icon and select Delete ().",
+        "wordsUnder": 61
+      },
+      {
+        "level": 1,
+        "text": "4. Click Yes in the Delete con rmation dialog.",
+        "wordsUnder": 61
+      },
+      {
+        "level": 1,
+        "text": "2. Click Yes in the Delete con rmation dialog.",
+        "wordsUnder": 61
+      },
+      {
+        "level": 1,
+        "text": "2. Go to the desired Folder/Index category.",
+        "wordsUnder": 61
+      },
+      {
+        "level": 1,
+        "text": "3. Select the checkboxes for the appropriate articles.",
+        "wordsUnder": 61
+      },
+      {
+        "level": 1,
+        "text": "4. Click Delete ().",
+        "wordsUnder": 61
+      },
+      {
+        "level": 1,
+        "text": "5. Click Yes in the Delete con rmation dialog.",
+        "wordsUnder": 61
+      },
+      {
+        "level": 1,
+        "text": "2. Go to the desired Folder/Index category.",
+        "wordsUnder": 61
+      },
+      {
+        "level": 1,
+        "text": "4. Click Yes in the Delete con rmation dialog.",
+        "wordsUnder": 61
+      },
+      {
+        "level": 1,
+        "text": "2. Select the desired articles and select Delete ().",
+        "wordsUnder": 61
+      },
+      {
+        "level": 1,
+        "text": "3. Click Yes in the Delete con rmation dialog.",
+        "wordsUnder": 61
+      },
+      {
+        "level": 1,
+        "text": " NOTE",
+        "wordsUnder": 61
+      },
+      {
+        "level": 1,
+        "text": "3. Click the More () icon and select Hide ().",
+        "wordsUnder": 61
+      },
+      {
+        "level": 1,
+        "text": "4. To Unhide, click the Unhide () icon.",
+        "wordsUnder": 61
+      },
+      {
+        "level": 1,
+        "text": "2. Go to the desired Folder/Index category.",
+        "wordsUnder": 61
+      },
+      {
+        "level": 1,
+        "text": "3. Select the checkboxes for the appropriate articles.",
+        "wordsUnder": 61
+      },
+      {
+        "level": 1,
+        "text": "4. Click Hide ().",
+        "wordsUnder": 61
+      },
+      {
+        "level": 1,
+        "text": "2. Go to the desired Folder/Index category.",
+        "wordsUnder": 61
+      },
+      {
+        "level": 1,
+        "text": "3. Hover over the desired article.",
+        "wordsUnder": 61
+      },
+      {
+        "level": 1,
+        "text": "4. Click the More () icon and select Hide ().",
+        "wordsUnder": 61
+      },
+      {
+        "level": 1,
+        "text": "2. Select the desired articles and click Hide ().",
+        "wordsUnder": 61
+      },
+      {
+        "level": 1,
+        "text": " NOTE",
+        "wordsUnder": 61
+      },
+      {
+        "level": 1,
+        "text": "4. Enter the new article name.",
+        "wordsUnder": 61
+      },
+      {
+        "level": 1,
+        "text": "2. Hover over the desired category.",
+        "wordsUnder": 61
+      },
+      {
+        "level": 1,
+        "text": "3. Hold and drag the category to the appropriate location.",
+        "wordsUnder": 61
+      },
+      {
+        "level": 1,
+        "text": "4. In the Move article panel, perform the following:",
+        "wordsUnder": 61
+      },
+      {
+        "level": 1,
+        "text": "5. Click Move.",
+        "wordsUnder": 61
+      },
+      {
+        "level": 1,
+        "text": "2. Go to the desired Folder/Index category.",
+        "wordsUnder": 61
+      },
+      {
+        "level": 1,
+        "text": "3. Select the checkboxes for the appropriate articles.",
+        "wordsUnder": 61
+      },
+      {
+        "level": 1,
+        "text": "4. Click the Move () icon.",
+        "wordsUnder": 61
+      },
+      {
+        "level": 1,
+        "text": "5. Click Move.",
+        "wordsUnder": 61
+      },
+      {
+        "level": 1,
+        "text": "4. Click Move.",
+        "wordsUnder": 61
+      },
+      {
+        "level": 1,
+        "text": "3. Click Move.",
+        "wordsUnder": 61
+      },
+      {
+        "level": 1,
+        "text": " NOTE",
+        "wordsUnder": 61
+      },
+      {
+        "level": 1,
+        "text": "3. Click More () and select Replicate ().",
+        "wordsUnder": 61
+      },
+      {
+        "level": 1,
+        "text": "4. In the Replicate article dialog, perform the following:",
+        "wordsUnder": 61
+      },
+      {
+        "level": 1,
+        "text": "5. Click Replicate.",
+        "wordsUnder": 61
+      },
+      {
+        "level": 1,
+        "text": "3. Click More () and select Replicate ().",
+        "wordsUnder": 61
+      },
+      {
+        "level": 1,
+        "text": "4. In the Replicate article dialog, perform the following:",
+        "wordsUnder": 61
+      },
+      {
+        "level": 1,
+        "text": "5. Click Replicate.",
+        "wordsUnder": 61
+      },
+      {
+        "level": 1,
+        "text": "3. In the Replicate article dialog, perform the following:",
+        "wordsUnder": 61
+      },
+      {
+        "level": 1,
+        "text": "4. Click Replicate.",
+        "wordsUnder": 61
+      },
+      {
+        "level": 1,
+        "text": " NOTE",
+        "wordsUnder": 61
+      },
+      {
+        "level": 1,
+        "text": "4. In the Clone article dialog, perform the following:",
+        "wordsUnder": 61
+      },
+      {
+        "level": 1,
+        "text": "5. Click Clone.",
+        "wordsUnder": 61
+      },
+      {
+        "level": 1,
+        "text": "2. Go to the desired Folder/Index category.",
+        "wordsUnder": 61
+      },
+      {
+        "level": 1,
+        "text": "3. Hover over the desired article.",
+        "wordsUnder": 61
+      },
+      {
+        "level": 1,
+        "text": "5. In the Clone article dialog, perform the following:",
+        "wordsUnder": 61
+      },
+      {
+        "level": 1,
+        "text": "6. Click Clone.",
+        "wordsUnder": 61
+      },
+      {
+        "level": 1,
+        "text": " NOTE",
+        "wordsUnder": 61
+      },
+      {
+        "level": 1,
+        "text": " NOTE",
+        "wordsUnder": 61
+      },
+      {
+        "level": 1,
+        "text": " NOTE",
+        "wordsUnder": 61
+      },
+      {
+        "level": 1,
+        "text": "FAQ",
+        "wordsUnder": 61
+      },
+      {
+        "level": 1,
+        "text": "4. Clear cache and perform a hard refresh:",
+        "wordsUnder": 61
+      },
+      {
+        "level": 1,
+        "text": "2. Click on Custom CSS & JavaScript.",
+        "wordsUnder": 61
+      },
+      {
+        "level": 1,
+        "text": "3. Paste the following code in the JavaScript tab:",
+        "wordsUnder": 61
+      },
+      {
+        "level": 1,
+        "text": "4. Click Save.",
+        "wordsUnder": 61
+      },
+      {
+        "level": 1,
+        "text": "1. Navigate to the respective article.",
+        "wordsUnder": 61
+      },
+      {
+        "level": 1,
+        "text": "3. Select More article options.",
+        "wordsUnder": 61
+      },
+      {
+        "level": 1,
+        "text": "4. Click on Search visibility.",
+        "wordsUnder": 61
+      },
+      {
+        "level": 1,
+        "text": "5. Enable both of the following options:",
+        "wordsUnder": 61
+      },
+      {
+        "level": 1,
+        "text": "6. Click Save to apply the changes.",
+        "wordsUnder": 61
+      },
+      {
+        "level": 1,
+        "text": "1. Create an \"Archive\" category",
+        "wordsUnder": 61
+      },
+      {
+        "level": 1,
+        "text": "2. Use a private workspace",
+        "wordsUnder": 61
+      },
+      {
+        "level": 1,
+        "text": "3. Export the articles",
+        "wordsUnder": 61
+      }
+    ],
     "hasConsistentHierarchy": true,
-    "longParagraphs": 0,
     "orphanHeadings": [],
-    "headings": [
-      { "level": 1, "text": "1. Verifies product availability" },
-      { "level": 1, "text": "2. Allocates inventory" },
-      { "level": 1, "text": "3. Creates picking instructions" },
-      { "level": 1, "text": "5. Features of Inventory & Warehouse" },
-      { "level": 1, "text": "1. Product Management" },
-      { "level": 1, "text": "2. Real-Time Stock Tracking" },
-      { "level": 1, "text": "3. Warehouse Location Management" },
-      { "level": 1, "text": "4. Barcode & QR Code Integration" },
-      { "level": 1, "text": "7. Order Management" },
-      { "level": 1, "text": "8. Inventory Alerts" },
-      { "level": 1, "text": "9. Batch & Serial Number Tracking" },
-      { "level": 1, "text": "10. Cycle Counting & Stock Audits" },
-      { "level": 1, "text": "11. Returns Management" },
-      { "level": 1, "text": "12. Reporting and Analytics" },
-      { "level": 1, "text": "13. Multi-Warehouse Management" },
-      { "level": 1, "text": "14. User Roles & Access Control" }
-    ]
+    "longParagraphs": 5,
+    "emptyHeadings": 0
   },
   "aiAnalysis": {
-    "readabilityLevel": "Medium",
-    "contentClarity": 8.0,
-    "structuralQuality": 8.5,
+    "readabilityLevel": "Easy",
+    "contentClarity": 8,
+    "structuralQuality": 9,
     "migrationReadiness": "READY_WITH_MINOR_CHANGES",
-    "readinessScore": 82,
-    "summary": "This document is well-structured and clearly explains inventory and warehouse management systems, making it highly suitable for migration with minor adjustments.",
+    "readinessScore": 85,
+    "summary": "This document is well-structured and clearly explains article management in Document360, making it highly suitable for migration with minor adjustments.",
     "strengths": [
-      "Clear, numbered headings provide a strong navigational structure",
-      "Consistent heading hierarchy throughout the document",
-      "Concise paragraphs with no over-long sections",
-      "Good use of bullet lists for feature breakdowns"
+      "Consistent and logical heading hierarchy with 106 headings for clear navigation.",
+      "Clear step-by-step instructions for multiple methods of performing actions (e.g., creating, deleting, moving articles).",
+      "Use of notes ( NOTE) to highlight important information, limits, and tips.",
+      "Good coverage of various article management tasks, from creation to replication and cloning.",
+      "Inclusion of a troubleshooting section addressing common errors like 'Article limit reached'."
     ],
     "issues": [
-      "Lacks introductory overview sections that explain context before diving into features",
-      "Tables and diagrams are absent — process flows would be easier to grasp visually"
+      "Five paragraphs exceed 150 words, potentially impacting readability for some users (e.g., the introductory paragraphs on 'Managing articles' and 'Creating article from template').",
+      "The document is quite lengthy (38 pages, 6476 words) which, while comprehensive, might be overwhelming if not broken down into smaller, more digestible articles in the knowledge base.",
+      "Some icons are used without clear textual explanation in the main flow (e.g., , , , , , , ⭐, , , , , ), although they are often accompanied by descriptive text in the steps.",
+      "The note about 'Starred page' mentioning a date 'September 2025' might become outdated or confusing."
     ],
     "suggestions": [
-      "Add a brief 'Overview' or 'Glossary' section near the top to define key terms",
-      "Consider adding tables to compare warehouse strategies (e.g. FIFO vs LIFO)",
-      "Convert long process descriptions into numbered step-by-step lists",
-      "Add cross-references between related sections (e.g. Order Management ↔ Inventory Alerts)"
+      "Break down the longer paragraphs (those >150 words) into smaller, more focused paragraphs or even separate sub-articles to improve scannability.",
+      "Consider splitting the document into multiple, more granular articles within the knowledge base, such as 'Creating Articles', 'Editing Articles', 'Deleting Articles', etc., to enhance user experience.",
+      "Ensure all icons used in the document are either universally understood or have clear, consistent textual labels or tooltips in the migrated content.",
+      "Review and update or remove the time-sensitive note regarding 'Starred page' visibility after September 2025 to maintain long-term relevance."
     ]
   },
   "verdict": {
-    "isReadyForMigration": true,
-    "confidence": 0.82,
-    "oneLineSummary": "This document is well-structured and clearly explains inventory and warehouse management systems, making it highly suitable for migration with minor adjustments."
+    "confidence": 0.85,
+    "oneLineSummary": "This document is well-structured and clearly explains article management in Document360, making it highly suitable for migration with minor adjustments.",
+    "readyForMigration": true
   },
   "analyzer": "gemini",
   "model": "gemini-2.5-flash-lite"
