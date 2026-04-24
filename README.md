@@ -1,143 +1,92 @@
-# DocReady — Document Analysis & Migration Readiness Tool
+# DocReady — Backend (API)
 
-A full-stack tool that analyzes `.docx` and `.pdf` documents to evaluate their **readiness for migration** to a knowledge-base platform (e.g. Document360). It extracts structural metrics, evaluates readability with **Google Gemini AI**, and produces a structured verdict (`READY` / `READY_WITH_MINOR_CHANGES` / `NEEDS_RESTRUCTURING` / `NOT_READY`) — plus actionable strengths, issues, and suggestions.
+The Spring Boot REST API that powers **DocReady**. It parses `.docx` and `.pdf` documents, computes structural metrics, and uses **Google Gemini** (with a deterministic heuristic fallback) to produce migration-readiness analysis.
 
-> **Answers**: *"Is this document ready for migration? If not, what needs improvement?"*
-
----
-
-##  Features
-
-- **Multi-format parsing** — `.docx` (Apache POI) and `.pdf` (PDFBox)
-- **Rich metrics** — pages, words, paragraphs, headings, avg-words/paragraph, images, tables, hyperlinks, lists
-- **Structural analysis** — heading hierarchy consistency, orphan headings, long paragraphs detection
-- **AI-driven analysis (Gemini)** — readability level, content clarity, structural quality, migration verdict, strengths, issues, suggestions
-- **Heuristic fallback** — deterministic rule-based scoring when AI is disabled, rate-limited, or misconfigured
-- **Per-request AI toggle + model picker** in the UI (persisted to localStorage)
-- **Toast notifications** showing which model ran, or the exact reason a Gemini call fell back to heuristic
-- **Polished React dashboard** — verdict banner, metrics grid, readiness gauge, readability chart, structure tree, AI insights, raw JSON viewer
-- **JSON export** of the full analysis
+> See the [root README](../README.md) for the full project overview and the [`../frontend`](../frontend) folder for the React UI.
 
 ---
 
-##  Architecture
+## 🛠 Tech Stack
 
-```
-┌─────────────────┐     POST /api/analyze     ┌──────────────────┐
-│  React + Vite   │ ───────────────────────►  │  Spring Boot     │
-│  (port 5173)    │                            │  (port 8080)     │
-│                 │ ◄──── JSON response ────── │                  │
-└─────────────────┘                            └────────┬─────────┘
-                                                        │
-                                              ┌─────────┼─────────┐
-                                              ▼         ▼         ▼
-                                          POI/PDFBox  Metrics  Gemini API
-                                          (parse)    (compute) (analyze)
-```
-
-**Layered backend**: `Controller → Services (Parser, Metrics, Structure, Gemini) → Models`.
-
----
-
-## 🛠 Tools & Libraries
-
-### Backend (`/backend`)
 | Library | Purpose |
 |---|---|
-| **Spring Boot 3.2.5** | REST API, DI, config |
+| **Spring Boot 3.2.5** | REST framework, DI, config |
 | **Java 17** | Language |
-| **Apache POI 5.2.5** | `.docx` parsing |
-| **Apache PDFBox 3.0.2** | `.pdf` parsing |
-| **Spring WebFlux (WebClient)** | Async HTTP calls to Gemini |
-| **Lombok** | Boilerplate reduction |
-| **Jackson** | JSON ser/de |
-
-### Frontend (`/frontend`)
-| Library | Purpose |
-|---|---|
-| **React 18 + Vite 5** | UI framework + dev server |
-| **React Router 6** | Routing |
-| **TailwindCSS 3** | Styling |
-| **Axios** | HTTP client |
-| **Recharts** | Readability bar chart |
-| **lucide-react** | Icons |
-| **react-hot-toast** | Toast notifications |
-
-### AI
-| Service | Default Model |
-|---|---|
-| **Google Gemini API** (`generativelanguage.googleapis.com`) | `gemini-2.5-flash-lite` (configurable in UI) |
+| **Apache POI 5.2.5** | `.docx` parsing (text + headings + tables + images) |
+| **Apache PDFBox 3.0.2** | `.pdf` text extraction + page count |
+| **Spring WebFlux (WebClient)** | Async HTTP calls to Gemini API |
+| **Lombok** | Boilerplate reduction (`@Data`, `@Builder`, `@RequiredArgsConstructor`) |
+| **Jackson** | JSON serialization / deserialization |
+| **Spring DevTools** | Hot-reload during development |
 
 ---
 
-##  Prerequisites
+## 📦 Prerequisites
 
-- **Java 17+** (`java -version`)
-- **Maven 3.9+** (or use the bundled wrapper `./mvnw`)
-- **Node.js 20.18+** and **npm 10+**
-- **Google Gemini API key** (free tier works) — get one at https://aistudio.google.com/apikey
+- **Java 17+** — `java -version`
+- **Maven 3.9+** (or use the bundled wrapper `./mvnw` / `mvnw.cmd`)
+- **Google Gemini API key** — get one free at https://aistudio.google.com/apikey
 
 ---
 
-##  Setup & Run
+## 🚀 Quick Start
 
-### 1. Clone & enter the repo
-```bash
-git clone <repo-url>
-cd AI_Parser
-```
+### 1. Set the Gemini API key
 
-### 2. Set the Gemini API key
-**Windows (PowerShell)** — for the current session:
+**Windows (PowerShell)** — current session:
 ```powershell
 $env:GEMINI_API_KEY="YOUR_KEY_HERE"
 ```
-**Persistent (per user)**:
+
+**Persistent (per Windows user)**:
 ```powershell
 [Environment]::SetEnvironmentVariable("GEMINI_API_KEY","YOUR_KEY_HERE","User")
 ```
+
 **macOS / Linux**:
 ```bash
 export GEMINI_API_KEY="YOUR_KEY_HERE"
 ```
 
-> If you skip this step the toggle in the UI will be greyed out and the tool will use the deterministic heuristic analyzer.
+> If unset, the API still works using the deterministic heuristic analyzer; the UI's AI toggle becomes disabled.
 
-### 3. Start the backend
+### 2. Run the server
+
 ```bash
 cd backend
 mvn spring-boot:run
 ```
+
 Server boots on **http://localhost:8080**. Verify:
+
 ```bash
 curl http://localhost:8080/api/health
 # {"status":"UP","service":"doc-migration-tool"}
 ```
 
-### 4. Start the frontend (new terminal)
-```bash
-cd frontend
-npm install
-npm run dev
-```
-Open **http://localhost:5173**.
+---
 
-### 5. Use it
-1. Drag-drop a `.docx` or `.pdf` (max 20 MB)
-2. Click the **Settings** button in the navbar to toggle Gemini AI and pick a model
-3. View the dashboard with verdict, metrics, AI insights
-4. Click **Export JSON** to save the full analysis
+## 📜 Available Maven Commands
+
+| Command | Description |
+|---|---|
+| `mvn spring-boot:run` | Start dev server with hot-reload |
+| `mvn clean compile` | Compile sources |
+| `mvn package` | Build executable JAR → `target/tool-1.0.0.jar` |
+| `java -jar target/tool-1.0.0.jar` | Run the packaged JAR |
 
 ---
 
-##  REST API
+## 🌐 REST API
 
 ### `GET /api/health`
+Liveness check.
 ```json
 { "status": "UP", "service": "doc-migration-tool" }
 ```
 
 ### `GET /api/settings`
+Discover Gemini configuration and the available model list (drives the UI's model picker).
 ```json
 {
   "geminiConfigured": true,
@@ -155,74 +104,112 @@ Open **http://localhost:5173**.
 ```
 
 ### `POST /api/analyze`
-Multipart form upload.
+Multipart upload + analysis.
 
 | Param | Type | Required | Description |
 |---|---|---|---|
 | `file` | file | ✅ | `.docx` or `.pdf`, max 20 MB |
-| `useAi` | boolean | ❌ | Override server default. `true` to call Gemini, `false` for heuristic |
-| `model` | string | ❌ | One of `availableModels`. Defaults to `defaultModel` |
+| `useAi` | boolean | ❌ | Override server default. `true` = call Gemini, `false` = heuristic |
+| `model` | string | ❌ | Must be one of `availableModels`. Defaults to `defaultModel` |
 
 Sample:
 ```bash
 curl -X POST "http://localhost:8080/api/analyze?useAi=true&model=gemini-2.5-flash-lite" \
-  -F "file=@samples/input/sample.pdf"
+  -F "file=@../samples/input/sample.pdf"
 ```
 
-Response → see [`samples/output/sample-output.json`](samples/output/sample-output.json).
+Response includes `metrics`, `structure`, `aiAnalysis`, `verdict`, `analyzer` (`gemini` / `heuristic`), and `model`. See [`samples/output/sample-output.json`](../samples/output/sample-output.json).
 
 ---
 
-##  Project Structure
+## 🗂 Project Structure
 
 ```
-AI_Parser/
-├── backend/
-│   ├── src/main/java/com/migration/tool/
-│   │   ├── MigrationToolApplication.java
-│   │   ├── config/        # GeminiConfig, WebConfig
-│   │   ├── controller/    # AnalysisController
-│   │   ├── exception/     # GlobalExceptionHandler
-│   │   ├── model/         # AnalysisResponse, ParsedDocument, etc.
-│   │   └── service/       # DocumentParserService, MetricsService,
-│   │                      # StructureAnalysisService, GeminiAnalysisService
-│   ├── src/main/resources/application.yml
-│   └── pom.xml
-├── frontend/
-│   ├── src/
-│   │   ├── api/                  # analysisApi.js
-│   │   ├── components/           # Navbar, FileDropzone, MetricsGrid,
-│   │   │                         # ReadinessGauge, SuggestionsList,
-│   │   │                         # SettingsMenu, ExportButton, ...
-│   │   ├── context/              # AnalysisContext, SettingsContext
-│   │   ├── pages/                # UploadPage, DashboardPage
-│   │   ├── App.jsx
-│   │   ├── main.jsx
-│   │   └── index.css
-│   ├── tailwind.config.js
-│   ├── vite.config.js
-│   └── package.json
-├── samples/
-│   ├── input/           # example documents
-│   └── output/          # corresponding JSON outputs
-└── README.md
+backend/
+├── src/main/java/com/migration/tool/
+│   ├── MigrationToolApplication.java       # @SpringBootApplication entry point
+│   ├── config/
+│   │   ├── GeminiConfig.java               # @ConfigurationProperties + WebClient bean
+│   │   └── WebConfig.java                  # CORS for localhost:5173
+│   ├── controller/
+│   │   └── AnalysisController.java         # /api endpoints
+│   ├── exception/
+│   │   └── GlobalExceptionHandler.java     # @RestControllerAdvice — uniform error JSON
+│   ├── model/
+│   │   ├── AnalysisResponse.java           # full payload returned to client
+│   │   ├── ParsedDocument.java             # raw text + metadata after parse
+│   │   ├── DocumentMetrics.java            # words, pages, headings, ...
+│   │   ├── DocumentStructure.java          # hierarchy, orphans, long paras
+│   │   ├── HeadingNode.java                # tree node (level, text)
+│   │   ├── AiAnalysis.java                 # readability, scores, summary, suggestions
+│   │   └── Verdict.java                    # ready flag + confidence + one-liner
+│   └── service/
+│       ├── DocumentParserService.java      # dispatches by content-type to docx/pdf
+│       ├── DocxParserService.java          # Apache POI: paragraphs, headings, tables
+│       ├── PdfParserService.java           # PDFBox: text + page count
+│       ├── MetricsService.java             # computes DocumentMetrics
+│       ├── StructureAnalysisService.java   # builds DocumentStructure + heading tree
+│       └── GeminiAnalysisService.java      # WebClient → Gemini, heuristic fallback
+├── src/main/resources/
+│   └── application.yml                     # server port, multipart, gemini config
+└── pom.xml
 ```
 
 ---
 
-##  Configuration
+## 🧠 How the Pipeline Works
 
-Edit [`backend/src/main/resources/application.yml`](backend/src/main/resources/application.yml):
+```
+┌──────────────────┐
+│  POST /analyze   │  multipart upload
+└────────┬─────────┘
+         ▼
+┌──────────────────────┐
+│ DocumentParserService│  → DocxParserService | PdfParserService
+└────────┬─────────────┘
+         ▼  ParsedDocument (fullText, headings, tables, images, …)
+┌──────────────────────┐
+│   MetricsService     │  → DocumentMetrics (words, pages, avg/para, …)
+└────────┬─────────────┘
+         ▼
+┌──────────────────────────┐
+│ StructureAnalysisService │  → DocumentStructure (hierarchy, orphans, long paras)
+└────────┬─────────────────┘
+         ▼
+┌──────────────────────────┐
+│  GeminiAnalysisService   │  if useAi && key set → call Gemini
+│                          │  else / on failure   → heuristicFallback()
+└────────┬─────────────────┘
+         ▼  AiAnalysis + analyzer + model used
+┌──────────────────┐
+│ AnalysisResponse │  JSON to client
+└──────────────────┘
+```
+
+---
+
+## ⚙️ Configuration
+
+[`src/main/resources/application.yml`](src/main/resources/application.yml):
 
 ```yaml
+server:
+  port: 8080
+
+spring:
+  servlet:
+    multipart:
+      max-file-size: 20MB
+      max-request-size: 20MB
+
 gemini:
   api-key: ${GEMINI_API_KEY:}      # from env var
   model: gemini-2.5-flash-lite     # default model
   endpoint: https://generativelanguage.googleapis.com/v1beta/models
-  enabled: true                    # default toggle state
-  max-input-chars: 30000           # truncate document text before sending
+  enabled: true                    # default UI toggle state
+  max-input-chars: 30000           # truncate doc text before sending to Gemini
   timeout-seconds: 60
-  available-models:                # shown in UI dropdown
+  available-models:                # surfaced in UI dropdown
     - gemini-2.5-flash-lite
     - gemini-2.5-flash
     - gemini-2.5-pro
@@ -231,76 +218,59 @@ gemini:
     - gemini-flash-latest
 ```
 
+All keys can also be overridden via env vars (e.g. `GEMINI_MODEL`, `GEMINI_TIMEOUT_SECONDS`) thanks to Spring Boot's relaxed binding.
+
 ---
 
-##  Sample Output
+## 🛡 Edge Cases Handled
 
-See [`samples/output/sample-output.json`](samples/output/sample-output.json) for a complete response. Key fields:
+| Case | Behavior |
+|---|---|
+| Empty file | `400 Bad Request` with clear message |
+| Unsupported file type | Rejected before parsing |
+| Large documents (> `max-input-chars`) | AI input truncated; full-text metrics still computed |
+| Inconsistent heading hierarchy | Flagged in `structure.hasConsistentHierarchy = false` and surfaced in `aiAnalysis.issues` |
+| Gemini quota exceeded (HTTP 429) | Auto-fallback to heuristic; response sets `analyzer = "heuristic"` and `aiAnalysis.summary` explains *"Gemini quota exceeded (HTTP 429)"* |
+| Invalid model name (HTTP 404) | Same fallback with the underlying error in summary |
+| Network failure / connection reset | Same fallback path |
+| Missing API key | All requests routed to heuristic; `/api/settings` reports `geminiConfigured: false` |
+| Malformed Gemini response | JSON-parse failure caught; heuristic fallback used |
 
-```jsonc
-{
-  "fileName": "sample.pdf",
-  "fileType": "pdf",
-  "fileSizeKb": 307,
-  "metrics": {
-    "totalPages": 17,
-    "wordCount": 1849,
-    "paragraphCount": 38,
-    "headingCount": 98,
-    "avgWordsPerParagraph": 48.7,
-    "imageCount": 1, "tableCount": 0, "hyperlinkCount": 0
-  },
-  "structure": {
-    "hasConsistentHierarchy": true,
-    "longParagraphs": 0,
-    "orphanHeadings": []
-  },
-  "aiAnalysis": {
-    "readabilityLevel": "Medium",
-    "contentClarity": 8.0,
-    "structuralQuality": 8.5,
-    "migrationReadiness": "READY_WITH_MINOR_CHANGES",
-    "readinessScore": 82,
-    "summary": "Well-structured document, suitable for migration with minor edits.",
-    "strengths": ["Clear headings", "Logical hierarchy"],
-    "issues": ["Some sections could use more examples"],
-    "suggestions": ["Add a glossary", "Split long sections into subsections"]
-  },
-  "verdict": {
-    "isReadyForMigration": true,
-    "confidence": 0.82,
-    "oneLineSummary": "Ready with minor changes."
-  },
-  "analyzer": "gemini",
-  "model": "gemini-2.5-flash-lite"
-}
+---
+
+## 🐛 Troubleshooting
+
+| Symptom | Cause / Fix |
+|---|---|
+| `Failed to execute goal spring-boot-maven-plugin:run` | Port 8080 already in use. `Get-NetTCPConnection -LocalPort 8080` then `Stop-Process -Id <PID>` |
+| `mvn` not found | Use the bundled wrapper: `./mvnw spring-boot:run` (or `.\mvnw.cmd` on Windows) |
+| Logs show `404 Not Found from POST .../models/<name>:generateContent` | Model not enabled for your key — check `/api/settings` for `availableModels` |
+| Logs show `429 Too Many Requests` | Free-tier quota hit. Switch to `gemini-2.5-flash-lite` (highest free quota) in the UI |
+| Devtools didn't pick up a change | Run `mvn -q compile` in another terminal to force a class-path event |
+| `No static resource api/settings.` | You're hitting the running JAR before the new endpoint was loaded — restart the server |
+
+---
+
+## 🧪 Manual Testing
+
+```bash
+# 1. Health
+curl http://localhost:8080/api/health
+
+# 2. Settings (model list)
+curl http://localhost:8080/api/settings
+
+# 3. Analyze with heuristic only
+curl -X POST "http://localhost:8080/api/analyze?useAi=false" \
+  -F "file=@../samples/input/sample.pdf"
+
+# 4. Analyze with Gemini
+curl -X POST "http://localhost:8080/api/analyze?useAi=true&model=gemini-2.5-flash-lite" \
+  -F "file=@../samples/input/sample.pdf" | jq .
 ```
 
 ---
 
-##  Edge Cases Handled
-
-- **Empty file** → 400 with clear error message
-- **Unsupported file type** → rejected before parsing
-- **Large documents** → AI input is truncated to `max-input-chars`; metrics still computed on full text
-- **Inconsistent headings** → flagged in `structure.hasConsistentHierarchy = false` and surfaced in issues
-- **Gemini quota / network failure** → automatic heuristic fallback; UI shows red toast + "Heuristic Insights" panel with the exact reason (e.g. *"Gemini quota exceeded (HTTP 429)"*)
-- **Missing API key** → toggle in UI is disabled with clear "API key not configured" status
-
----
-
-##  Troubleshooting
-
-| Symptom | Cause / Fix |
-|---|---|
-| Settings toggle is greyed out | `GEMINI_API_KEY` not set; restart backend after exporting the env var |
-| Toast: *"Model X failed — using heuristic"* | Quota (429) or model unavailable. Switch model in Settings (try `flash-lite`) |
-| `404 Not Found` from Gemini | Model name is invalid for your key. Check `/api/settings` for `availableModels` |
-| Vite fails with "requires Node 20.19+" | You're on older Node. Either upgrade or `npm i -D vite@5 @vitejs/plugin-react@4` |
-| `mvn` not found | Use the bundled wrapper: `./mvnw spring-boot:run` (or `mvnw.cmd` on Windows) |
-
----
-
-##  License
+## 📜 License
 
 For evaluation / take-home assignment purposes.
